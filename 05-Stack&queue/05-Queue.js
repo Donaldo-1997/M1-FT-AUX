@@ -18,11 +18,18 @@ const { Queue } = require("../estructuras")
 // Importante!: Aquellas personas que no cumplan con los requisitos para ingresar deben ser removidos de la cola 
 
 var controlAcces = function(queue, event){
-    // Tu código aca:
-    
-  };
-      
-  
+  let passed = []
+  let numTickets = []
+
+  queue.array.forEach(element => {
+      if(element.age >= 18 && element.ticket.event === event && !numTickets.includes(element.ticket.number)){
+        numTickets.push(element.ticket.number)
+        passed.push(element.fullname)
+      } 
+  });
+
+  return passed
+};
 
   module.exports = {
     controlAcces,
